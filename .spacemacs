@@ -338,10 +338,14 @@ you should place your code here."
      (require 'helm-bookmark)
   ;;
   ;; KEYBINDINGS
+  ;; spacemacs prefix
      (spacemacs/declare-prefix "o" "own-menu")
      (spacemacs/set-leader-keys "oo" 'olivetti-mode)
      (spacemacs/set-leader-keys "o <tab>" 'org-sparse-finish)
      (spacemacs/set-leader-keys "ow" 'setup-write)
+  ;; 
+     (define-key evil-normal-state-map (kbd "ù") 'avy-goto-word-1)
+     (define-key evil-normal-state-map (kbd "C-ù") 'avy-goto-char)
   ;;
   ;; ORG MODE
   ;; Org directory
