@@ -327,6 +327,9 @@ you should place your code here."
      (global-visual-line-mode 1)
   ;; Disable cursor movement after insert mode
      (setq evil-move-cursor-back nil)
+  ;; Don't assume a sentence has two spaces at the end.
+  ;; This aint no typewriter.
+     (setq sentence-end-double-space nil)
   ;; Choose spell check
      (setq ispell-program-name "aspell")
      (setq ispell-dictionary "dutch")
