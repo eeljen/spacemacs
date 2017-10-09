@@ -343,7 +343,7 @@ you should place your code here."
      (spacemacs/set-leader-keys "oo" 'olivetti-mode)
      (spacemacs/set-leader-keys "o <tab>" 'org-sparse-finish)
      (spacemacs/set-leader-keys "ow" 'setup-write)
-  ;; 
+  ;; avy bindings
      (define-key evil-normal-state-map (kbd "ù") 'avy-goto-word-1)
      (define-key evil-normal-state-map (kbd "C-ù") 'avy-goto-char)
   ;;
@@ -362,39 +362,53 @@ you should place your code here."
      (setq org-agenda-window-setup 'current-window)
      (setq org-agenda-custom-commands
            '(
-             ("c" "Agenda & all todo's" ( ;; All
+             ("c" "Agenda & all todo's" (                                      ;;; ALL
                (agenda "" ((org-agenda-overriding-header "Complete Agenda")))
                (alltodo "" ((org-agenda-overriding-header "All TODOs")))))
-             ("x" "Agenda & categories" ( ;; In categories
-               (agenda "" ((org-agenda-overriding-header "Complete Agenda")))   ;; agenda complete
-               (todo "" ((org-agenda-files '("~/Dropbox/org/doct"))             ;; todo doct
+             ("x" "Agenda & categories" (                                      ;;; CATEGORIES
+               (agenda "" ((org-agenda-overriding-header "Complete Agenda")))   ;; agenda
+               (todo "" (
+                         (org-agenda-files '("~/Dropbox/org/doct"))             ;; todo doct
                          (org-agenda-todo-ignore-scheduled (quote all))         ;; ignore scheduled
-                         (org-agenda-overriding-header "Doctoraat Extra")))
-               (todo "" ((org-agenda-files '("~/Dropbox/org/doct/schrijven"))   ;; doct/schrijven
+                         (org-agenda-overriding-header "Doctoraat Extra")
+                        ))
+               (todo "" (
+                         (org-agenda-files '("~/Dropbox/org/doct/schrijven"))   ;; todo schrijven
                          (org-agenda-todo-ignore-scheduled (quote all))         ;; ignore scheduled
-                         (org-agenda-overriding-header "Doctoraat Schrijven")))
-               (todo "" ((org-agenda-files '("~/Dropbox/org/onderwijs.org"))    ;; todo ond
+                         (org-agenda-overriding-header "Doctoraat Schrijven")
+                        ))
+               (todo "" (
+                         (org-agenda-files '("~/Dropbox/org/onderwijs.org"))    ;; todo onderwijs
                          (org-agenda-todo-ignore-scheduled (quote all))         ;; ignore scheduled
-                         (org-agenda-overriding-header "Onderwijs Extra")))
-               (todo "" ((org-agenda-files '("~/Dropbox/org/taken.org"))        ;; todo taken
+                         (org-agenda-overriding-header "Onderwijs Extra")
+                         ))
+               (todo "" (
+                         (org-agenda-files '("~/Dropbox/org/taken.org"))        ;; todo taken
                          (org-agenda-todo-ignore-scheduled (quote all))         ;; ignore scheduled
-                         (org-agenda-overriding-header "Taken     Extra")))
+                         (org-agenda-overriding-header "Taken     Extra")
+                        ))
                ))
-             ("d" "Doctoraat agenda & todos" ( ;; Full agenda & doct todo's
-               (agenda "" ((org-agenda-overriding-header "Doctoraat Agenda")))
-               (todo "" ((org-agenda-files '("~/Dropbox/org/doct"))            ;; todo doct
+             ("d" "Doctoraat agenda & todos" (                                ;;; DOCTORAAT
+               (agenda "" ((org-agenda-overriding-header "Agenda")))           ;; agenda
+               (todo "" (
+                         (org-agenda-files '("~/Dropbox/org/doct"))            ;; todo doct
                          (org-agenda-todo-ignore-scheduled (quote all))        ;; ignore scheduled
-                         (org-agenda-overriding-header "Doctoraat")))
-               (todo "" ((org-agenda-files '("~/Dropbox/org/doct/schrijven"))  ;; todo doct/schrijven
+                         (org-agenda-overriding-header "Doctoraat")
+                        ))
+               (todo "" (
+                         (org-agenda-files '("~/Dropbox/org/doct/schrijven"))  ;; todo doct/schrijven
                          (org-agenda-todo-ignore-scheduled (quote all))        ;; ignore scheduled
-                         (org-agenda-overriding-header "Schrijven")))
-               ))
-             ("o" "Onderwijs agenda & todos" ( ;; Ond only
-               (agenda "" ((org-agenda-files '("~/Dropbox/org/onderwijs.org"))
-                           (org-agenda-overriding-header "Onderwijs Agenda")))
-               (todo "" ((org-agenda-files '("~/Dropbox/org/onderwijs.org"))
-                         (org-agenda-overriding-header "Onderwijs")))
-               ))
+                         (org-agenda-overriding-header "Schrijven")
+                        ))
+              ))
+             ("o" "Onderwijs agenda & todos" (                                ;;; ONDERWIJS
+               (agenda "" ((org-agenda-overriding-header "Agenda")))           ;; agenda
+               (todo "" (
+                         (org-agenda-files '("~/Dropbox/org/onderwijs.org"))   ;; todo onderwijs
+                         (org-agenda-todo-ignore-scheduled (quote all))        ;; ignore scheduled
+                         (org-agenda-overriding-header "Onderwijs")
+                        ))
+              ))
              )
         )
   ;;
@@ -476,7 +490,7 @@ you should place your code here."
  '(org-indent-mode-turns-off-org-adapt-indentation t)
  '(org-mobile-force-id-on-agenda-items nil)
  '(org-startup-indented t)
- '(org-tags-column -80)
+ '(org-tags-column -65)
  '(org-todo-keyword-faces
    (quote
     (("DONE" . "dark olive green")
