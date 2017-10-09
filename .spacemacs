@@ -353,6 +353,7 @@ you should place your code here."
      (setq org-agenda-files (list org-directory))
      (add-to-list 'org-agenda-files "~/Dropbox/org/doct")
      (add-to-list 'org-agenda-files "~/Dropbox/org/doct/schrijven")
+     (add-to-list 'org-agenda-files "~/Dropbox/org/doct/sferen")
   ;; Mobile configuration
      (setq org-mobile-inbox-for-pull "~/Dropbox/org/mobile-inbox.org")
      (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
