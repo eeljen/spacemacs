@@ -459,7 +459,9 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode nil)
  '(calendar-week-start-day 1)
+ '(line-number-mode nil)
  '(olivetti-body-width 90)
  '(org-agenda-block-separator "===================")
  '(org-agenda-current-time-string "now  - - - - - -")
@@ -519,6 +521,7 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Source Code Pro" :foundry "nil" :slant normal :weight normal :height 130 :width normal))))
  '(org-agenda-date ((t (:foreground "#7590db" :height 1.2))))
  '(org-agenda-date-today ((t (:inherit bold :height 1.2))))
  '(org-agenda-date-weekend ((t (:inherit (bold height) :foreground "#7590db" :height 1.2))))
