@@ -4,5 +4,5 @@
 echo "Copying ~/.spacemacs to current folder"
 cp ~/.spacemacs .
 echo "~/.spacemacs copied here"
-echo "check .files in current folder:"
+echo "files in folder:"
 ls -a -l

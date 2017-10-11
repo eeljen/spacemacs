@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     markdown
      yaml
      html
      ;; ----------------------------------------------------------------
@@ -358,55 +359,57 @@ you should place your code here."
      (setq org-mobile-inbox-for-pull "~/Dropbox/org/mobile-inbox.org")
      (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
   ;; Set refile targets
-     (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+     (setq org-refile-targets '((org-agenda-files :maxlevel . 2)))
   ;; Custom AGENDA commands
      (setq org-agenda-window-setup 'current-window)
      (setq org-agenda-custom-commands
            '(
-             ("c" "Agenda & all todo's" (                                      ;;; ALL
+             ("c" "Agenda & all todo's" (                                     ;;; ALL
                (agenda "" ((org-agenda-overriding-header "Complete Agenda")))
                (alltodo "" ((org-agenda-overriding-header "All TODOs")))))
-             ("x" "Agenda & categories" (                                      ;;; CATEGORIES
-               (agenda "" ((org-agenda-overriding-header "Complete Agenda")))   ;; agenda
+             ("x" "Agenda & categories" (                                    ;;; CATEGORIES
+               (agenda "" ((org-agenda-overriding-header "Complete Agenda"))) ;; agenda
                (todo "" (
-                         (org-agenda-files '("~/Dropbox/org/doct"))             ;; todo doct
-                         (org-agenda-todo-ignore-scheduled (quote all))         ;; ignore scheduled
+                         (org-agenda-files '("~/Dropbox/org/doct"             ;; todo doct
+                                             "~/Dropbox/org/doct/schrijven"
+                                             "~/Dropbox/org/doct/sferen"))
+                         (org-agenda-todo-ignore-scheduled (quote all))       ;; ignore scheduled
                          (org-agenda-overriding-header "Doctoraat Extra")
                         ))
                (todo "" (
-                         (org-agenda-files '("~/Dropbox/org/doct/schrijven"))   ;; todo schrijven
-                         (org-agenda-todo-ignore-scheduled (quote all))         ;; ignore scheduled
-                         (org-agenda-overriding-header "Doctoraat Schrijven")
-                        ))
-               (todo "" (
-                         (org-agenda-files '("~/Dropbox/org/onderwijs.org"))    ;; todo onderwijs
-                         (org-agenda-todo-ignore-scheduled (quote all))         ;; ignore scheduled
+                         (org-agenda-files '("~/Dropbox/org/onderwijs.org"))  ;; todo onderwijs
+                         (org-agenda-todo-ignore-scheduled (quote all))       ;; ignore scheduled
                          (org-agenda-overriding-header "Onderwijs Extra")
                          ))
                (todo "" (
-                         (org-agenda-files '("~/Dropbox/org/taken.org"))        ;; todo taken
-                         (org-agenda-todo-ignore-scheduled (quote all))         ;; ignore scheduled
+                         (org-agenda-files '("~/Dropbox/org/taken.org"))      ;; todo taken
+                         (org-agenda-todo-ignore-scheduled (quote all))       ;; ignore scheduled
                          (org-agenda-overriding-header "Taken     Extra")
                         ))
                ))
-             ("d" "Doctoraat agenda & todos" (                                ;;; DOCTORAAT
-               (agenda "" ((org-agenda-overriding-header "Agenda")))           ;; agenda
+             ("d" "Doctoraat agenda & todos" (                               ;;; DOCTORAAT
+               (agenda "" ((org-agenda-overriding-header "Agenda")))          ;; agenda
                (todo "" (
-                         (org-agenda-files '("~/Dropbox/org/doct"))            ;; todo doct
-                         (org-agenda-todo-ignore-scheduled (quote all))        ;; ignore scheduled
+                         (org-agenda-files '("~/Dropbox/org/doct"))           ;; todo doct
+                         (org-agenda-todo-ignore-scheduled (quote all))       ;; ignore scheduled
                          (org-agenda-overriding-header "Doctoraat")
                         ))
                (todo "" (
-                         (org-agenda-files '("~/Dropbox/org/doct/schrijven"))  ;; todo doct/schrijven
-                         (org-agenda-todo-ignore-scheduled (quote all))        ;; ignore scheduled
+                         (org-agenda-files '("~/Dropbox/org/doct/sferen"))    ;; todo doct/sferen
+                         (org-agenda-todo-ignore-scheduled (quote all))       ;; ignore scheduled
+                         (org-agenda-overriding-header "Sferen")
+                         ))
+               (todo "" (
+                         (org-agenda-files '("~/Dropbox/org/doct/schrijven")) ;; todo doct/schrijven
+                         (org-agenda-todo-ignore-scheduled (quote all))       ;; ignore scheduled
                          (org-agenda-overriding-header "Schrijven")
                         ))
               ))
-             ("o" "Onderwijs agenda & todos" (                                ;;; ONDERWIJS
-               (agenda "" ((org-agenda-overriding-header "Agenda")))           ;; agenda
+             ("o" "Onderwijs agenda & todos" (                               ;;; ONDERWIJS
+               (agenda "" ((org-agenda-overriding-header "Agenda")))          ;; agenda
                (todo "" (
-                         (org-agenda-files '("~/Dropbox/org/onderwijs.org"))   ;; todo onderwijs
-                         (org-agenda-todo-ignore-scheduled (quote all))        ;; ignore scheduled
+                         (org-agenda-files '("~/Dropbox/org/onderwijs.org"))  ;; todo onderwijs
+                         (org-agenda-todo-ignore-scheduled (quote all))       ;; ignore scheduled
                          (org-agenda-overriding-header "Onderwijs")
                         ))
               ))
@@ -473,9 +476,9 @@ you should place your code here."
  '(org-agenda-time-grid
    (quote
     ((daily today require-timed remove-match)
-     (800 1000 1200 1400 1600 1800 2000)
+     (900 1100 1300 1500 1700)
      "....." "----------------")))
- '(org-agenda-todo-ignore-deadlines (quote all))
+ '(org-agenda-todo-ignore-deadlines nil)
  '(org-agenda-window-frame-fractions (quote (0.4 . 0.75)))
  '(org-agenda-window-setup (quote other-window))
  '(org-archive-location "./archive/%s_archive::ARCHIVE_OLPATH")
@@ -490,6 +493,8 @@ you should place your code here."
  '(org-hierarchical-todo-statistics nil)
  '(org-indent-mode-turns-off-org-adapt-indentation t)
  '(org-mobile-force-id-on-agenda-items nil)
+ '(org-startup-align-all-tables t)
+ '(org-startup-folded t)
  '(org-startup-indented t)
  '(org-tags-column -65)
  '(org-todo-keyword-faces
@@ -499,7 +504,7 @@ you should place your code here."
  '(org-todo-keywords (quote ((sequence "TODO" "WAIT" "DONE"))))
  '(package-selected-packages
    (quote
-    (flyspell-popup flyspell-correct-helm flyspell-correct auto-dictionary xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help yaml-mode pandoc-mode ox-pandoc ht web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode olivetti org-category-capture alert log4e gntp define-word ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline reveal-in-osx-finder restart-emacs request rainbow-delimiters popwin persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary org-projectile org-present org-pomodoro org-download org-bullets open-junk-file neotree move-text mmm-mode markdown-toc macrostep lorem-ipsum linum-relative link-hint launchctl info+ indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio gnuplot gh-md flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (multiple-cursors markdown-mode flyspell-popup flyspell-correct-helm flyspell-correct auto-dictionary xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help yaml-mode pandoc-mode ox-pandoc ht web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode olivetti org-category-capture alert log4e gntp define-word ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline reveal-in-osx-finder restart-emacs request rainbow-delimiters popwin persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary org-projectile org-present org-pomodoro org-download org-bullets open-junk-file neotree move-text mmm-mode markdown-toc macrostep lorem-ipsum linum-relative link-hint launchctl info+ indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio gnuplot gh-md flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
