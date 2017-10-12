@@ -377,7 +377,10 @@ you should place your code here."
                (agenda "" ((org-agenda-overriding-header "Complete Agenda")))
                (alltodo "" ((org-agenda-overriding-header "All TODOs")))))
              ("x" "Agenda & categories" (                                    ;;; CATEGORIES
-               (agenda "" ((org-agenda-overriding-header "Complete Agenda"))) ;; agenda
+             (agenda "" (                                                    ;; agenda
+                         (org-agenda-start-on-weekday 1)                     ;; start monday
+                         (org-agenda-overriding-header "Complete Agenda"))
+                         )
                (todo "" (
                          (org-agenda-files '("~/Dropbox/org/doct"             ;; todo doct
                                              "~/Dropbox/org/doct/schrijven"
@@ -491,8 +494,7 @@ you should place your code here."
      "....." "----------------")))
  '(org-agenda-todo-ignore-deadlines nil)
  '(org-agenda-window-frame-fractions (quote (0.4 . 0.75)))
- '(org-agenda-window-setup (quote other-window))
- '(org-archive-location "./archive/%s_archive::ARCHIVE_OLPATH")
+ '(org-archive-location "./archive/%s_archive")
  '(org-archive-reversed-order t)
  '(org-archive-save-context-info (quote (time file itags olpath)))
  '(org-archive-subtree-add-inherited-tags t)
