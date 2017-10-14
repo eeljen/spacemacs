@@ -447,6 +447,8 @@ you should place your code here."
   ;; Custom writing environment
      (defun setup-write ()
        (interactive)
+       (spacemacs/reset-font-size)
+       (spacemacs/scale-up-font)
        (olivetti-mode)
        (org-indent-mode)
        (spacemacs/toggle-fringe-off)
