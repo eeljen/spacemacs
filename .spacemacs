@@ -237,7 +237,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -342,6 +342,7 @@ you should place your code here."
   ;; KEYBINDINGS
   ;; spacemacs prefix
      (spacemacs/declare-prefix "o" "own-menu")
+     (spacemacs/set-leader-keys "oi" 'clone-indirect-buffer-other-window)
      (spacemacs/set-leader-keys "oo" 'olivetti-mode)
      (spacemacs/set-leader-keys "o <tab>" 'org-sparse-finish)
      (spacemacs/set-leader-keys "ow" 'setup-write)
@@ -373,10 +374,7 @@ you should place your code here."
      (setq org-agenda-window-setup 'current-window)
      (setq org-agenda-custom-commands
            '(
-             ("c" "Agenda & all todo's" (                                     ;;; ALL
-               (agenda "" ((org-agenda-overriding-header "Complete Agenda")))
-               (alltodo "" ((org-agenda-overriding-header "All TODOs")))))
-             ("x" "Agenda & categories" (                                    ;;; CATEGORIES
+             ("c" "Agenda & categories" (                                   ;;; CATEGORIES
              (agenda "" (                                                    ;; agenda
                          (org-agenda-start-on-weekday 1)                     ;; start monday
                          (org-agenda-overriding-header "Complete Agenda"))
@@ -450,7 +448,9 @@ you should place your code here."
        (interactive)
        (olivetti-mode)
        (org-indent-mode)
-       (spacemacs/toggle-fringe-off))
+       (spacemacs/toggle-fringe-off)
+       (hidden-mode-line-mode)
+      )
   ;;
   ;; END OF USER CONFIG
   )
@@ -464,7 +464,8 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(calendar-week-start-day 1)
- '(line-number-mode nil)
+ '(column-number-mode nil)
+ '(line-number-mode t)
  '(olivetti-body-width 90)
  '(org-agenda-block-separator "===================")
  '(org-agenda-current-time-string "now  - - - - - -")
