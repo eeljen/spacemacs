@@ -449,6 +449,7 @@ you should place your code here."
        (interactive)
        (spacemacs/reset-font-size)
        (spacemacs/scale-up-font)
+       (spacemacs/scale-up-font)
        (olivetti-mode)
        (org-indent-mode)
        (spacemacs/toggle-fringe-off)
