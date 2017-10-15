@@ -321,8 +321,8 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;;
   ;; USER CONFIG
-  ;; Choose evil escape key & timing (use .2 with "jj")
-     (setq-default evil-escape-key-sequence "jj")
+  ;; Choose evil escape key & timing (use .2 with "ii")
+     (setq-default evil-escape-key-sequence "ii")
      (setq-default evil-escape-delay 0.2)
   ;; Disable right alt key as alt key
      (setq mac-right-option-modifier nil)
