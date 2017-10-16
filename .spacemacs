@@ -459,7 +459,7 @@ you should place your code here."
        (olivetti-mode)
        (org-indent-mode)
        (spacemacs/toggle-fringe-off)
-       (hidden-mode-line-mode)
+       (spacemacs/toggle-mode-line)
       )
   ;;
   ;; END OF USER CONFIG
