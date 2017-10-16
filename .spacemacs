@@ -416,6 +416,12 @@ you should place your code here."
                          (org-agenda-overriding-header "Schrijven")
                         ))
               ))
+             ("x" "Day view" (                                   ;;; CATEGORIES
+             (agenda "" (                                                    ;; agenda
+                         (org-agenda-span 1)
+                         (org-agenda-overriding-header "Agenda Today"))
+                         )
+               ))
              ("o" "Onderwijs agenda & todos" (                               ;;; ONDERWIJS
                (agenda "" ((org-agenda-overriding-header "Agenda")))          ;; agenda
                (todo "" (
