@@ -137,7 +137,7 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light
-                         soft-morning)
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -343,6 +343,7 @@ you should place your code here."
   ;; KEYBINDINGS
   ;; spacemacs prefix
      (spacemacs/declare-prefix "o" "own-menu")
+     (spacemacs/set-leader-keys "oc" 'helm-bibtex)
      (spacemacs/set-leader-keys "oi" 'clone-indirect-buffer-other-window)
      (spacemacs/set-leader-keys "oo" 'olivetti-mode)
      (spacemacs/set-leader-keys "o <tab>" 'org-sparse-finish)
@@ -485,12 +486,13 @@ you should place your code here."
  '(org-agenda-menu-two-columns nil)
  '(org-agenda-prefix-format
    (quote
-    ((agenda . " %i %-13c%?-12t% s")
+    ((agenda . " %i %-13c%?-13t% s")
      (todo . " %i %-13c")
      (tags . " %i %-13c")
      (search . " %i %-13c"))))
  '(org-agenda-remove-times-when-in-prefix t)
  '(org-agenda-restore-windows-after-quit t)
+ '(org-agenda-scheduled-leaders (quote ("Scheduled:  " "Sched.%2dx: ")))
  '(org-agenda-search-headline-for-time nil)
  '(org-agenda-skip-deadline-if-done nil)
  '(org-agenda-skip-deadline-prewarning-if-scheduled t)
@@ -500,9 +502,9 @@ you should place your code here."
  '(org-agenda-tags-column -80)
  '(org-agenda-time-grid
    (quote
-    ((daily today require-timed remove-match)
+    ((daily weekly today require-timed remove-match)
      (900 1100 1300 1500 1700)
-     "....." "----------------")))
+     "......" "----------------")))
  '(org-agenda-todo-ignore-deadlines nil)
  '(org-agenda-window-frame-fractions (quote (0.4 . 0.75)))
  '(org-archive-location "./archive/%s_archive")
@@ -511,12 +513,18 @@ you should place your code here."
  '(org-archive-subtree-add-inherited-tags t)
  '(org-auto-align-tags t)
  '(org-blank-before-new-entry (quote ((heading . t) (plain-list-item . auto))))
+ '(org-clock-clocked-in-display (quote both))
  '(org-complete-tags-always-offer-all-agenda-tags t)
  '(org-deadline-warning-days 7)
+ '(org-default-priority 66)
  '(org-hide-emphasis-markers t)
- '(org-hierarchical-todo-statistics nil)
+ '(org-hierarchical-todo-statistics t)
+ '(org-highest-priority 65)
  '(org-indent-mode-turns-off-org-adapt-indentation t)
+ '(org-lowest-priority 67)
  '(org-mobile-force-id-on-agenda-items nil)
+ '(org-priority-faces (quote ((65 . "firebrick") (67 . "forest green"))))
+ '(org-priority-start-cycle-with-default t)
  '(org-startup-align-all-tables t)
  '(org-startup-folded t)
  '(org-startup-indented t)
@@ -528,7 +536,7 @@ you should place your code here."
  '(org-todo-keywords (quote ((sequence "TODO" "WAIT" "DONE"))))
  '(package-selected-packages
    (quote
-    (org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib biblio biblio-core smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor multiple-cursors markdown-mode flyspell-popup flyspell-correct-helm flyspell-correct auto-dictionary xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help yaml-mode pandoc-mode ox-pandoc ht web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode olivetti org-category-capture alert log4e gntp define-word ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline reveal-in-osx-finder restart-emacs request rainbow-delimiters popwin persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary org-projectile org-present org-pomodoro org-download org-bullets open-junk-file neotree move-text mmm-mode markdown-toc macrostep lorem-ipsum linum-relative link-hint launchctl info+ indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio gnuplot gh-md flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib biblio biblio-core smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor multiple-cursors markdown-mode flyspell-popup flyspell-correct-helm flyspell-correct auto-dictionary xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help yaml-mode pandoc-mode ox-pandoc ht web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode olivetti org-category-capture alert log4e gntp define-word ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline reveal-in-osx-finder restart-emacs request rainbow-delimiters popwin persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary org-projectile org-present org-pomodoro org-download org-bullets open-junk-file neotree move-text mmm-mode markdown-toc macrostep lorem-ipsum linum-relative link-hint launchctl info+ indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio gnuplot gh-md flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
