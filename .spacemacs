@@ -348,6 +348,9 @@ you should place your code here."
      (spacemacs/set-leader-keys "oo" 'olivetti-mode)
      (spacemacs/set-leader-keys "o <tab>" 'org-sparse-finish)
      (spacemacs/set-leader-keys "ow" 'setup-write)
+  ;; movement bindings
+     (define-key evil-normal-state-map "gb" 'beginning-of-line)
+     (define-key evil-normal-state-map "gr" 'end-of-line)
   ;; avy bindings
      (define-key evil-normal-state-map (kbd "ù") 'avy-goto-word-1)
      (define-key evil-normal-state-map (kbd "C-ù") 'avy-goto-char)
@@ -486,13 +489,13 @@ you should place your code here."
  '(org-agenda-menu-two-columns nil)
  '(org-agenda-prefix-format
    (quote
-    ((agenda . " %i %-13c%?-13t% s")
-     (todo . " %i %-13c")
+    ((agenda . "  %-12c%?-13t% s")
+     (todo . "  %-13c")
      (tags . " %i %-13c")
      (search . " %i %-13c"))))
  '(org-agenda-remove-times-when-in-prefix t)
  '(org-agenda-restore-windows-after-quit t)
- '(org-agenda-scheduled-leaders (quote ("Scheduled:  " "Sched.%2dx: ")))
+ '(org-agenda-scheduled-leaders (quote ("" "Sched.%2dx: ")))
  '(org-agenda-search-headline-for-time nil)
  '(org-agenda-skip-deadline-if-done nil)
  '(org-agenda-skip-deadline-prewarning-if-scheduled t)
@@ -523,7 +526,7 @@ you should place your code here."
  '(org-indent-mode-turns-off-org-adapt-indentation t)
  '(org-lowest-priority 67)
  '(org-mobile-force-id-on-agenda-items nil)
- '(org-priority-faces (quote ((65 . "firebrick") (67 . "forest green"))))
+ '(org-priority-faces (quote ((65 . "red") (67 . "forestgreen"))))
  '(org-priority-start-cycle-with-default t)
  '(org-startup-align-all-tables t)
  '(org-startup-folded t)
