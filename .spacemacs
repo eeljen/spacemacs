@@ -321,9 +321,9 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;;
   ;; USER CONFIG
-  ;; Choose evil escape key & timing (use .2 with "ii")
+  ;; Choose evil escape key & timing
      (setq-default evil-escape-key-sequence "ii")
-     (setq-default evil-escape-delay 0.2)
+     (setq-default evil-escape-delay 0.4)
   ;; Disable right alt key as alt key
      (setq mac-right-option-modifier nil)
   ;; Turn on line-wrap everywhere
@@ -348,9 +348,11 @@ you should place your code here."
      (spacemacs/set-leader-keys "oo" 'olivetti-mode)
      (spacemacs/set-leader-keys "o <tab>" 'org-sparse-finish)
      (spacemacs/set-leader-keys "ow" 'setup-write)
-  ;; movement bindings
+  ;; movement bindings with g
      (define-key evil-normal-state-map "gb" 'beginning-of-line)
      (define-key evil-normal-state-map "gr" 'end-of-line)
+  ;; bindings for s-h/j/k/l - NOT WORKING
+     (evil-define-key 'insert key-translation-map (kbd "s-h") (kbd "<left>"))
   ;; avy bindings
      (define-key evil-normal-state-map (kbd "ù") 'avy-goto-word-1)
      (define-key evil-normal-state-map (kbd "C-ù") 'avy-goto-char)
@@ -381,7 +383,6 @@ you should place your code here."
            '(
              ("c" "Agenda & categories" (                                   ;;; CATEGORIES
              (agenda "" (                                                    ;; agenda
-                         (org-agenda-start-on-weekday 1)                     ;; start monday
                          (org-agenda-overriding-header "Complete Agenda"))
                          )
                (todo "" (
@@ -495,7 +496,7 @@ you should place your code here."
      (search . " %i %-13c"))))
  '(org-agenda-remove-times-when-in-prefix t)
  '(org-agenda-restore-windows-after-quit t)
- '(org-agenda-scheduled-leaders (quote ("" "Sched.%2dx: ")))
+ '(org-agenda-scheduled-leaders (quote ("" "Sched.%3dx  ")))
  '(org-agenda-search-headline-for-time nil)
  '(org-agenda-skip-deadline-if-done nil)
  '(org-agenda-skip-deadline-prewarning-if-scheduled t)
