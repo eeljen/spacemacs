@@ -351,8 +351,11 @@ you should place your code here."
   ;; movement bindings with g
      (define-key evil-normal-state-map "gb" 'beginning-of-line)
      (define-key evil-normal-state-map "gr" 'end-of-line)
-  ;; bindings for s-h/j/k/l - NOT WORKING
-     (evil-define-key 'insert key-translation-map (kbd "s-h") (kbd "<left>"))
+     (define-key evil-normal-state-map "g'" 'half-page-up)
+     (define-key evil-normal-state-map "g(" 'half-page-down)
+  ;; bindings for s-h/j/k/l
+     (global-set-key (kbd "s-j") 'half-page-down)
+     (global-set-key (kbd "s-k") 'half-page-up)
   ;; avy bindings
      (define-key evil-normal-state-map (kbd "ù") 'avy-goto-word-1)
      (define-key evil-normal-state-map (kbd "C-ù") 'avy-goto-char)
@@ -449,6 +452,18 @@ you should place your code here."
               :prepend t :kill-buffer t)
       ))
   ;; COMMANDS
+  ;; Scroll half a page down
+     (defun half-page-down ()
+       (interactive)
+       (evil-window-bottom)
+       (evil-scroll-line-to-center (line-number-at-pos))
+      )
+  ;; Scroll half a page up
+     (defun half-page-up ()
+       (interactive)
+       (evil-window-top)
+       (evil-scroll-line-to-center (line-number-at-pos))
+      )
   ;; Collapse all but current tree
      (defun org-sparse-finish ()
        (interactive)
@@ -481,8 +496,12 @@ you should place your code here."
  '(calendar-week-start-day 1)
  '(column-number-mode nil)
  '(line-number-mode t)
+ '(neo-hidden-regexp-list
+   (quote
+    ("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" ".DS_Store$")))
  '(olivetti-body-width 90)
  '(org-agenda-block-separator "===================")
+ '(org-agenda-compact-blocks nil)
  '(org-agenda-current-time-string "now  - - - - - -")
  '(org-agenda-deadline-leaders (quote ("Deadline:  " "In %3d d.: " "%2d d. ago: ")))
  '(org-agenda-files (quote ("~/Dropbox/org")))
