@@ -347,6 +347,7 @@ you should place your code here."
      (spacemacs/set-leader-keys "oi" 'clone-indirect-buffer-other-window)
      (spacemacs/set-leader-keys "oo" 'olivetti-mode)
      (spacemacs/set-leader-keys "o <tab>" 'org-sparse-finish)
+     (spacemacs/set-leader-keys "os" 'ispell-buffer)
      (spacemacs/set-leader-keys "ow" 'setup-write)
   ;; movement bindings with g
      (define-key evil-normal-state-map "gb" 'beginning-of-line)
