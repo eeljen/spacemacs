@@ -353,6 +353,7 @@ you should place your code here."
   ;; org-ids
      (spacemacs/declare-prefix "od" "id")
      (spacemacs/set-leader-keys "odc" 'org-id-copy)
+     (spacemacs/set-leader-keys "odc" 'org-id-update-id-locations)
   ;; movement bindings with g
      (define-key evil-normal-state-map "gb" 'beginning-of-line)
      (define-key evil-normal-state-map "gr" 'end-of-line)
